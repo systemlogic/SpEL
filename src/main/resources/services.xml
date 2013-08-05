@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:component-scan base-package="com.bean" />
+	<!-- services -->
+
+	<bean id="xmlUID" class="com.bean.UID">
+		<property name="firstName" value="Ananya" />
+		<property name="lastName" value="Dhingra" />
+		<property name="dob" value="#{date}" />
+		<property name="address" value="#{xmlAddress}" />
+		<property name="uid" value="1212143" />
+	</bean>
+
+	<bean name="xmlAddress" class="com.bean.Address">
+		<property name="doorNumber" value="100" />
+		<property name="socityName" value="Jal Vayu Vihar" />
+		<property name="locality" value="Noida" />
+		<property name="district" value="Gautam Budha Nagar" />
+		<property name="state" value="Uttar Pradesh" />
+		<property name="pin" value="124002" />
+	</bean>
+	<bean name="date" class="java.util.Date">
+		<property name="year" value="#{2011 -1900}" />
+		<property name="month" value="10" />
+		<property name="date" value="15" />
+	</bean>
+
+	<bean id="xmlUIDTest-2" class="com.bean.UID">
+		<property name="firstName" value="Ananya" />
+		<property name="lastName" value="Dhingra" />
+		<property name="dob" ref="date-2" />
+		<property name="address" ref="xmlAddressTest-2" />
+		<property name="uid" value="1212143" />
+	</bean>
+
+	<bean name="xmlAddressTest-2" class="com.bean.Address">
+		<property name="doorNumber" value="200" />
+		<property name="socityName" value="Vayu Jal Vihar" />
+		<property name="locality" value="Greater Noida" />
+		<property name="district" value="Gautam Budha Nagar" />
+		<property name="state" value="Uttar Pradesh" />
+		<property name="pin" value="124020" />
+	</bean>
+	<!-- more bean definitions for services go here -->
+	<bean name="date-2" class="java.util.Date">
+		<property name="year" value="#{2011 -1900}" />
+		<property name="month" value="10" />
+		<property name="date" value="15" />
+	</bean>
+
+
+
+</beans>
